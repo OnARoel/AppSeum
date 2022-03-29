@@ -1,0 +1,72 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { Button, Typography } from '@mui/material';
+import "./CreateAccount.css";
+import "./Index.css";
+import NavBar from './NavBar';
+import Footer from "./Footer";
+import axios from "axios";
+
+const baseURL = `https://localhost:4000/api/users/register`;
+
+function CreateAccount() {
+
+    function createPost() {
+        axios
+            .post(baseURL, {
+                username: "Hello World!",
+                email: "This is a new post.",
+                password: "test password",
+                isAdmin: false,
+            })
+            .then((response) => {
+                console.log(response);
+            });
+    }
+
+    //this.refs.myField.getValue()
+    return (
+        <>
+            <div className='MainContainer'>
+                <NavBar></NavBar>
+                <div className='LoginForm'>
+                    <Box
+                        component="form"
+                        sx={{
+                            border: '0.5px solid #a3a3a3',
+                            p: 5,
+                            backgroundColor: '#fafafa',
+                            boxShadow: 5,
+                            borderRadius: 2,
+                            textAlign: 'left'
+
+                        }}
+                        noValidate
+                        autoComplete="off"
+                    >
+                        <span>
+                            <Typography variant="h6" component="h6" >
+                                Please enter your login details to create an account. <br></br>This doesn't work yet.
+                            </Typography>
+                        </span>
+
+                        <TextField ref="UserNameValue" id="outlined-basic" label="Username" size="small" varint="outlined" sx={{ mt: 5, mr: 3 }} />
+                        <TextField ref="EmailValue" id="outlined-basic" label="Email" size="small" type="email" variant="outlined" sx={{ mt: 5 }} />
+                        <div>
+                            <TextField ref="PasswordValue" id="outlined-basic" size="small" label="Password" type="password" variant="outlined" sx={{ mt: 5 }} />
+                        </div>
+                        <Button variant="outlined" size="small" sx={{ mt: 5, width: "30%", display: 'block' }}
+                            onClick={createPost}>
+                            Sign Up
+                        </Button>
+                    </Box>
+                </div>
+            </div>
+            <Footer></Footer>
+        </>
+
+    );
+}
+
+export default CreateAccount;

@@ -1,0 +1,11 @@
+input .search-box{
+  width: 35%;
+  height: 20px;
+  margin-left: 8%;
+  margin-bottom: 15px;
+}
+
+span {
+  margin-left: 8%;
+  display: inline-block;
+}

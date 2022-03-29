@@ -1,0 +1,43 @@
+
+.MainContainer {
+  background-color: #fafafa;
+  margin-top: 100px; /*ensures main body wont have nav over lap content*/
+  margin-bottom: 100px;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+    color: black;
+  }
+
+  img {
+    opacity: 90%;
+    border-radius: 2%;
+    width: fit-content;
+  }
+
+  @media(max-width:1023px){
+    .Container{
+        display:flex;
+        flex-direction: column;
+    }
+
+  }
+
+/* @media (min-width: 1024px) {
+    .Container{
+      display: none;
+    }
+} */
+
+  /*for different screen-sizes*/
+@media only screen and (max-width: 680px) {
+        .MainContainer {
+        margin-bottom: 100px;
+        /*ensures the footer doesn't overlap the main body content*/        
+    }
+  }

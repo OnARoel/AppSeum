@@ -1,0 +1,17 @@
+
+@media(max-width:1023px){
+    .toolBar, .LogoImage, .headToolBar{
+        display:flex;
+        justify-content: space-between;
+    }
+
+    .NavBarButtons {
+        display: none;
+    }
+  }
+
+@media (min-width: 1024px) {
+    .toolBar{
+      display: none;
+    }
+}

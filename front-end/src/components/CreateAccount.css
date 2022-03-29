@@ -1,0 +1,12 @@
+body {
+    background-color: #fafafa;
+}
+
+.CreateAccountForm {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10vh;
+    width: fit-content;
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+body {
+    background-color: #fafafa;
+}
+
+.LoginForm {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10vh;
+    width: fit-content;
+    text-align: center;
+    min-width: fit-content;
+    height: 100%;
+    min-height: 100%;
+}
