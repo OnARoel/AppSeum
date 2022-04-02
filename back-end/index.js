@@ -60,8 +60,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'front-end/build')))
+app.use(express.static(path.join(__dirname, '../front-end/build')))
 // Anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/front-end/build/index.html'))
+  res.sendFile(path.join(__dirname + '../front-end/build/index.html'))
 })
