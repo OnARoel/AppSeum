@@ -2,11 +2,12 @@
   "name": "AppSeum",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "back-end/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-prebuild": "cd back-end && npm install",
 	  "start": "cd back-end && node index.js",
+    "frontend": "cd frontend && npm install && npm start",
 	  "heroku-postbuild": "cd front-end && npm install && npm run build"
   },
   "author": "",
