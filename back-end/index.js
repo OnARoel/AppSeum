@@ -54,6 +54,10 @@ app.listen(PORT, () => {
 });
 
 import path from "path";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'front-end/build')))
 // Anything that doesn't match the above, send back index.html
