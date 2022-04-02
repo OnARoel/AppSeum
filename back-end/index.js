@@ -53,7 +53,7 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-const path = require('path')
+import path from "path";
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'front-end/build')))
 // Anything that doesn't match the above, send back index.html
