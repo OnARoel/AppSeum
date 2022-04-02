@@ -6,7 +6,8 @@ const app = express();
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
-var mongoDB = "mongodb://127.0.0.1:27017/gallery";
+//cloud mongodb connection
+var mongoDB = "mongodb+srv://capstone:capstone@cluster0.kcjop.mongodb.net/gallery";
 //Get the default connection
 var db = mongoose.connection;
 import cookieParser from "cookie-parser";
