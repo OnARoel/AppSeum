@@ -5,7 +5,7 @@ import createProxyMiddleware from 'http-proxy-middleware';
 
 module.exports = function(app) {
   app.use(
-    '/rest',
+    '/api',
     createProxyMiddleware({
       target: 'http://localhost:'+ process.env.PORT,
       changeOrigin: true,
