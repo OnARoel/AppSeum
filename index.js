@@ -44,8 +44,8 @@ dotenv.config();
 
 //if port 4000 is occupied, will go to 5000
 //const PORT = process.env.PORT || 5000;
-const PORT = process.env.PORT || 4000
-
+//const PORT = process.env.PORT || 4000
+const PORT = 4000
 //getting the web server. port 4000
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
