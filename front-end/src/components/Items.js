@@ -27,7 +27,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 
-const baseURL = `http://localhost:4000/api/items`;
+const baseURL = `/api/items`;
 
 function Items() {
 
