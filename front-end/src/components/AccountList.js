@@ -15,7 +15,7 @@ import { Grid } from "@mui/material";
 import docCookies from 'doc-cookies';
 import ConfirmDialog from "./ConfirmDialog";
 
-const baseURL = "http://localhost:4000/api/users/";
+const baseURL = "/api/users/";
 
 function AccountList() {
 
