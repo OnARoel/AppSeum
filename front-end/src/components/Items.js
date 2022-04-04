@@ -3,7 +3,7 @@ import React from "react";
 import Footer from "./Footer";
 import { Button, Card, TextField, Typography } from "@mui/material";
 import LoggedInNavBar from "./LoggedInNavBar";
-import LoggedInNavBar_Admin from "./LoggedInNavBar_Admin";
+import LOGGED_IN_NAVBAR_ADMIN from "./LoggedInNavBar_Admin";
 import axios from "axios";
 import { useEffect } from "react";
 import CardActions from "@mui/material/CardActions";
@@ -23,12 +23,11 @@ import docCookies from "doc-cookies";
 import { Link } from "react-router-dom";
 
 import {
-  EmailShareButton,
   FacebookShareButton,
   TwitterShareButton,
 } from "react-share";
 
-const baseURL = `/api/items`;
+const baseURL = `http://localhost:4000/api/items`;
 
 function Items() {
 
@@ -36,8 +35,21 @@ function Items() {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [isAdminValue, setIsAdmin] = useState("");
   const [rowID, setrowID] = useState("");
-  const handleClickOpen = () => {
+
+  const [newItemName, setnewItemName] = useState("");
+  const [newDonorINfo, setnewDonorInfo] = useState("");
+  const [newMaterial, setnewMaterial] = useState("");
+  const [newDescription, setnewDescription] = useState("");
+  //donor info/
+  //material/
+  //description 
+
+  function handleClickOpen (itemName, donorInfo, material, description){
     setOpen(true);
+    setnewItemName(itemName);
+    setnewDonorInfo(donorInfo);
+    setnewMaterial(material);
+    setnewDescription(description);
   };
 
   const handleClose = () => {
@@ -80,8 +92,8 @@ function Items() {
         console.log(error);
       });
     //for displaying updated data on items page after item deleted
-    const data = data.filter((row) => row._id !== _id);
-    setNewData(data);
+    const nData = data.filter((row) => row._id !== _id);
+    setNewData(nData);
     //console.log(data);
   }
 
@@ -99,22 +111,6 @@ function Items() {
   }, []);
 
   function getPost() {
-    // axios
-    //   .post(
-    //     `${baseURL}/t`,
-    //     {
-    //       email: docCookies.getItem("email"),
-    //       companyName: docCookies.getItem("company"),
-    //     }
-    //   )
-    //   .then(() => {
-    //     console.log("YEAH POST");
-    //   })
-    //   .catch((err) => {
-    //     console.log("error occured");
-    //     console.log(err.response);
-    //   });
-
     axios
       .post(`${baseURL}/searchByComp`,
         {
@@ -134,7 +130,7 @@ function Items() {
     <>
       <div className="MainContainer">
         {isAdminValue === "true" ? (
-          <LoggedInNavBar_Admin></LoggedInNavBar_Admin>
+          <LOGGED_IN_NAVBAR_ADMIN></LOGGED_IN_NAVBAR_ADMIN>
         ) : (
           <LoggedInNavBar></LoggedInNavBar>
         )}{" "}
@@ -200,8 +196,11 @@ function Items() {
                           </Typography>
                         </CardContent>
                         <CardActions>
-                          <Button size="small" onClick={handleClickOpen}>
-                            Share
+                          <Button size="small" onClick={()=>handleClickOpen(row.name, row.donorInfo, row.material, row.description)}>
+                            Share 
+                            {/* <div sx={{display: "none"}}>
+                              {setnewItemName(row.name)}
+                            </div> */}
                           </Button>
 
                           <div>
@@ -222,24 +221,9 @@ function Items() {
                                 </DialogContentText>
                               </DialogContent>
                               <DialogActions>
-
-                                {/* //use %20 for space in a URL
-                                //use %0A for newline character in URL .. \n doesn't work  */}
-                                {/* <Button onClick={handleClose}>
-                                  <a
-                                    class="twitter-share-button"
-                                    href={`https://twitter.com/intent/tweet?text=Check out my artifact!
-                                    %0AIt's called ${row.name}%0AIts donor info is ${row.donorInfo ? row.donorInfo : "None"}%0AIt's made of ${row.material ? row.material : "None"}%0AAnd its description is ${row.description ? row.descripton : "None"}%0AIf you want to make your own artifact, check out AppSeum! (Link URL to website here)%0A`}
-
-                                    data-size="large"
-                                  >
-                                    <TwitterIcon />
-                                  </a>
-                                </Button> */}
-
-                                <TwitterShareButton onClick={handleClose}
+                                <TwitterShareButton onclick={()=>{ handleClose(); }}
                                   url={'https://www.google.com'} //insert AppSeum URL here or link to image somehow?
-                                  title={`Check out my artifact!\nIt's called ${row.name}\nIts donor info is ${row.donorInfo ? row.donorInfo : "None"}\nIt's made of ${row.material ? row.material : "None"}\nAnd its description is ${row.description ? row.descripton : "None"}\nIf you want to make your own artifact, check out AppSeum! (Link URL to website here)\n`}
+                                  title={`Check out my artifact!\nIt's called ${newItemName}\nIts donor info is ${newDonorINfo ? newDonorINfo : "None"}\nIt's made of ${newMaterial ? newMaterial : "None"}\nAnd its description is ${newDescription ? newDescription : "None"}\nIf you want to make your own artifact, check out AppSeum! (Link URL to website here)\n`}
 
                                 >
                                   <TwitterIcon sx={{mr: 3}} color="primary"/>
@@ -247,7 +231,7 @@ function Items() {
                                 {/* https://www.facebook.com/share.php?u=google.com&quote=your%20text%20goes%20here%20HAH */}
                                 <FacebookShareButton onClick={handleClose} 
                                   url={'https://www.google.com'} 
-                                  quote={`Check out my artifact!\nIt's called ${row.name}\nIts donor info is ${row.donorInfo ? row.donorInfo : "None"}\nIt's made of ${row.material ? row.material : "None"}\nAnd its description is ${row.description ? row.descripton : "None"}\nIf you want to make your own artifact, check out AppSeum! (Link URL to website here)\n`}
+                                  quote={`Check out my artifact!\nIt's called ${newItemName}\nIts donor info is ${newDonorINfo ? newDonorINfo : "None"}\nIt's made of ${newMaterial ? newMaterial : "None"}\nAnd its description is ${newDescription ? newDescription : "None"}\nIf you want to make your own artifact, check out AppSeum! (Link URL to website here)\n`}
                                 >
                                   <FacebookIcon sx={{mr: 3}} color="primary"/>
                                 </FacebookShareButton>
