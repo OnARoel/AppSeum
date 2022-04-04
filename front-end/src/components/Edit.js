@@ -15,8 +15,8 @@ import { useEffect } from "react";
 import docCookies from "doc-cookies";
 import LoggedInNavBar_Admin from "./LoggedInNavBar_Admin";
 
-const baseURL = `http://localhost:4000/api/items/editById`;
-const baseURL_GET = "http://localhost:4000/api/items/findById/";
+const baseURL = `/api/items/editById`;
+const baseURL_GET = "/api/items/findById/";
 
 function Edit(props) {
   //const [addedState, setAddedState] = useState("false");

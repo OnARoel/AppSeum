@@ -14,7 +14,7 @@ import { useState } from "react";
 import { Grid } from "@mui/material";
 import docCookies from 'doc-cookies';
 
-var baseURL = "http://localhost:4000/api/users/findById/";
+var baseURL = "/api/users/findById/";
 
 function Account() {
 

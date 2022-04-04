@@ -13,7 +13,7 @@ import Alert from '@mui/material/Alert';
 import { AlertTitle } from '@mui/material';
 import docCookies from 'doc-cookies';
 
-const baseURL = `http://localhost:4000/api/users/signin`;
+const baseURL = `/api/users/signin`;
 
 
 function Login() {

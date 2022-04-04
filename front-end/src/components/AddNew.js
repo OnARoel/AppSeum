@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import docCookies from 'doc-cookies';
 import LoggedInNavBar_Admin from "./LoggedInNavBar_Admin";
 
-const baseURL = `http://localhost:4000/api/items/addnew`;
+const baseURL = `/api/items/addnew`;
 
 function CreateItem() {
 

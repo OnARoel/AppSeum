@@ -16,8 +16,8 @@ import { useEffect } from "react";
 import docCookies from 'doc-cookies';
 import FileBase64 from "react-file-base64";
 
-const baseURL_POST = "http://localhost:4000/api/users/profile";
-const baseURL_GET = "http://localhost:4000/api/users/findById/";
+const baseURL_POST = "/api/users/profile";
+const baseURL_GET = "/api/users/findById/";
 
 function EditProfile(props) {
 
