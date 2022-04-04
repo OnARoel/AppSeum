@@ -6,6 +6,8 @@ const app = express();
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
+import helmet from 'helmet'; // creates headers that protect from attacks (security) 
+app.use(helmet())
 //cloud mongodb connection
 var mongoDB = "mongodb+srv://capstone:capstone@cluster0.kcjop.mongodb.net/gallery";
 //Get the default connection
@@ -20,7 +22,23 @@ mongoose.connect(mongoDB, {
 //Bind connection to error event (to get notification of connection errors)
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-app.use(cors());
+// ** MIDDLEWARE ** //
+const whitelist = ['http://localhost:3000', 'http://localhost:4000', 'https://appseum-0403.herokuapp.com']
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions));
+
 // parse application/x-www-form-urlencoded
 //accepting larger image file here to save
 app.use(bodyParser.urlencoded({
@@ -44,7 +62,7 @@ dotenv.config();
 
 //if port 4000 is occupied, will go to 5000
 //const PORT = process.env.PORT || 5000;
-const PORT = process.env.PORT 
+const PORT = process.env.PORT || 4000
 
 //getting the web server. port 4000
 app.listen(PORT, () => {
@@ -54,11 +72,14 @@ app.listen(PORT, () => {
 import path from "path";
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'front-end/build')))
-// Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/front-end/build/index.html'))
-})
+
+if(process.env.NODE_ENV === "production"){
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  // Serve static files from the React frontend app
+  app.use(express.static(path.join(__dirname, 'front-end/build')))
+  // Anything that doesn't match the above, send back index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/front-end/build/index.html'))
+  })
+}
