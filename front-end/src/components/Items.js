@@ -222,16 +222,16 @@ function Items() {
                               </DialogContent>
                               <DialogActions>
                                 <TwitterShareButton onclick={()=>{ handleClose(); }}
-                                  url={'https://www.google.com'} //insert AppSeum URL here or link to image somehow?
-                                  title={`Check out my artifact!\nIt's called ${newItemName}\nIts donor info is ${newDonorINfo ? newDonorINfo : "None"}\nIt's made of ${newMaterial ? newMaterial : "None"}\nAnd its description is ${newDescription ? newDescription : "None"}\nIf you want to make your own artifact, check out AppSeum! (Link URL to website here)\n`}
+                                  url={'https://appseum-0403.herokuapp.com/'} //insert AppSeum URL here or link to image somehow?
+                                  title={`Check out my artifact!\nIt's called ${newItemName}\nIts donor info is ${newDonorINfo ? newDonorINfo : "None"}\nIt's made of ${newMaterial ? newMaterial : "None"}\nAnd its description is ${newDescription ? newDescription : "None"}\nIf you want to make your own artifact, check out AppSeum! \n`}
 
                                 >
                                   <TwitterIcon sx={{mr: 3}} color="primary"/>
                                 </TwitterShareButton>
                                 {/* https://www.facebook.com/share.php?u=google.com&quote=your%20text%20goes%20here%20HAH */}
                                 <FacebookShareButton onClick={handleClose} 
-                                  url={'https://www.google.com'} 
-                                  quote={`Check out my artifact!\nIt's called ${newItemName}\nIts donor info is ${newDonorINfo ? newDonorINfo : "None"}\nIt's made of ${newMaterial ? newMaterial : "None"}\nAnd its description is ${newDescription ? newDescription : "None"}\nIf you want to make your own artifact, check out AppSeum! (Link URL to website here)\n`}
+                                  url={'https://appseum-0403.herokuapp.com/'} 
+                                  quote={`Check out my artifact!\nIt's called ${newItemName}\nIts donor info is ${newDonorINfo ? newDonorINfo : "None"}\nIt's made of ${newMaterial ? newMaterial : "None"}\nAnd its description is ${newDescription ? newDescription : "None"}\nIf you want to make your own artifact, check out AppSeum! \n`}
                                 >
                                   <FacebookIcon sx={{mr: 3}} color="primary"/>
                                 </FacebookShareButton>
